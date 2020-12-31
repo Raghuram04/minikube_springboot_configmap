@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
- name: weblearner-service
+ name: configmap-service
 spec:
  type: NodePort
  ports:
@@ -9,6 +9,6 @@ spec:
     nodePort: 30018
     port: 8085
  selector:
-  app: weblearner
+  app: springboot-configmap
   type: rest_service
 

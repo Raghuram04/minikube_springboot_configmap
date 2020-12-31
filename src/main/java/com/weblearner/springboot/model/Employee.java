@@ -8,6 +8,17 @@ public class Employee {
 	private String empId;
 	private String empName;
 	private String deptName;
+	private String roleDesc;
+	
+	
+
+	public String getRoleDesc() {
+		return roleDesc;
+	}
+
+	public void setRoleDesc(String roleDesc) {
+		this.roleDesc = roleDesc;
+	}
 
 	public String getEmpId() {
 		return empId;

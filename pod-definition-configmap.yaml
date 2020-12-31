@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: springboot-configmap
+ labels:
+  app: springboot-configmap
+  type: rest_service
+spec:
+ containers:
+  - name: springboot-configmap
+    image: raghuram04/springboot_configmap
+    ports:
+    - name: spring-port
+      containerPort: 80
+    env:
+     - name: ROLE_DESC
+       valueFrom:
+        configMapKeyRef:
+          name: employee-role
+          key: role.desc

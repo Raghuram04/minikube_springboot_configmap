@@ -1,6 +1,7 @@
 package com.weblearner.springboot;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,12 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.weblearner.springboot.model.Employee;
 import com.weblearner.springboot.service.EmployeeService;
 
-/*
- * RestFul webservice using Spring boot to perform CRUD * 
- * Dummy Service is created to mimic the backend service.
- * 
- */
-
 @RestController
 @RequestMapping("/weblearner")
 public class EmployeeController {
@@ -27,32 +22,17 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService dummyService;
 	
+	@Value("${env}")
+	private String env;
+
 	// Get the employee detail based on employee id
 
 	@GetMapping("/employee/{empid}")
 	public Employee getEmployee(@PathVariable("empid") String empId) {
-		return dummyService.getEmployee(empId);
-	}
-	
-	//post the new employee details to backend
-
-	@PostMapping("/employee")
-	public String newEmployee(@RequestBody Employee employee) {
-		return dummyService.addEmployee(employee);
-	}
-	
-	// update the employee depart using emp id
-
-	@PutMapping("/employee/{empid}")
-	public String updateEmployee(@PathVariable("empid") String empId, @RequestParam("deptname") String deptName) {
-		return dummyService.updateEmployeeDept(empId, deptName);
-	}
-	
-	// Delete the employee
-
-	@DeleteMapping("/employee/{empid}")
-	public String deleteEmployee(@PathVariable("empid") String empId) {
-		return dummyService.deleteEmployee(empId);
+		Employee emp = dummyService.getEmployee(empId);	
+		System.out.println("Environment"+ env);
+		emp.setRoleDesc(env);
+		return emp;
 	}
 
 }
