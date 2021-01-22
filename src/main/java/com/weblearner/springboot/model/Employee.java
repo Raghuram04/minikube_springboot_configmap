@@ -4,14 +4,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Employee {
-
 	private String empId;
 	private String empName;
 	private String deptName;
 	private String roleDesc;
 	
-	
-
 	public String getRoleDesc() {
 		return roleDesc;
 	}

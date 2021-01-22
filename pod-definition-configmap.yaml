@@ -13,8 +13,8 @@ spec:
     - name: spring-port
       containerPort: 80
     env:
-     - name: ROLE_DESC
+     - name: CONFIGENV
        valueFrom:
         configMapKeyRef:
-          name: employee-role
-          key: role.desc
+          name: env-name
+          key: configenv

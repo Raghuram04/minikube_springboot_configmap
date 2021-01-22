@@ -21,33 +21,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return empStream.findAny().get();
 	}
 
-	@Override
-	public String addEmployee(Employee e) {
-		employeeLst.add(e);
-		return "Success";
-	}
-
-	@Override
-	public String updateEmployeeDept(String empId, String deptName) {
-
-		employeeLst.stream().forEach(emp -> {
-			if (emp.getEmpId().equalsIgnoreCase(empId)) {
-				emp.setDeptName(deptName);
-			}
-		});
-
-		return "SUCCESS";
-	}
-
-	@Override
-	public String deleteEmployee(String empId) {
-		System.out.println("Employee Id -->"+ empId);
-		if (employeeLst.removeIf(emp -> emp.getEmpId().equalsIgnoreCase(empId)))
-			return "SUCCESS";
-		else
-			return "FAIURE";
-	}
-
 	static {
 		Employee emp1 = new Employee();
 		Employee emp2 = new Employee();
